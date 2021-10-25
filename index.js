@@ -20,6 +20,7 @@ toggleBtn.addEventListener('click', () => {
         darkenText.classList.remove('unselected')
 
     }
+    reset();
 })
 
 hexInput.addEventListener('keyup', () => {
@@ -27,6 +28,7 @@ hexInput.addEventListener('keyup', () => {
     if (!isValidHex(hex)) return;
     const strippedHex = hex.replace('#', '');
     inputColor.style.backgroundColor = "#" + strippedHex;
+    reset();
 })
 
 //checking if hex code is valid 
@@ -105,3 +107,12 @@ slider.addEventListener('input', () => {
     alteredColorText.innerText = `Altered Color ${alteredHex}`;
     //update the altered color
 })
+
+
+//reset function
+const reset = () => {
+    slider.value = 0;
+    sliderText.innerText = `0%`;
+    alteredColor.style.backgroundColor = hexInput.value;
+    alteredColorText.innerText = `Altered Color ${hexInput.value}`;
+}
